@@ -1,0 +1,180 @@
+commodities:
+  onion:
+    canonical_name: Onion
+    synonyms: [onions, pyaz, pyaaz, kanda, ulli, vengayam]
+    unit: Rs/Qtl
+    default_state: Maharashtra
+
+series:
+  onion_modal_price_ap:
+    description: "Onion mandi modal price in Andhra Pradesh"
+    commodity: onion
+    source_table: onion_prices
+    value_column: modal_price
+    date_column: date
+    filters:
+      state: Andhra Pradesh
+    grain: daily
+    unit: Rs/Qtl
+    role: target_candidate
+    
+  onion_modal_price_karnataka:
+    description: "Onion mandi modal price in Karnataka"
+    commodity: onion
+    source_table: onion_prices
+    value_column: modal_price
+    date_column: date
+    filters:
+      state: Karnataka
+    grain: daily
+    unit: Rs/Qtl
+    role: target_candidate
+
+  onion_modal_price_mp:
+    description: "Onion mandi modal price in Madhya Pradesh"
+    commodity: onion
+    source_table: onion_prices
+    value_column: modal_price
+    date_column: date
+    filters:
+      state: Madhya Pradesh
+    grain: daily
+    unit: Rs/Qtl
+    role: target_candidate
+
+  onion_modal_price_maharashtra:
+    description: "Onion mandi modal price in Maharashtra"
+    commodity: onion
+    source_table: onion_prices
+    value_column: modal_price
+    date_column: date
+    filters:
+      state: Maharashtra
+    grain: daily
+    unit: Rs/Qtl
+    role: target_candidate
+
+  onion_retail_price_ap:
+    description: "Onion retail price (DOCA) in Andhra Pradesh"
+    commodity: onion
+    source_table: onion_prices
+    value_column: retail_price
+    date_column: date
+    filters:
+      state: Andhra Pradesh
+    grain: daily
+    unit: Rs/Qtl
+    role: target_candidate
+
+  onion_retail_price_karnataka:
+    description: "Onion retail price (DOCA) in Karnataka"
+    commodity: onion
+    source_table: onion_prices
+    value_column: retail_price
+    date_column: date
+    filters:
+      state: Karnataka
+    grain: daily
+    unit: Rs/Qtl
+    role: target_candidate
+
+  onion_retail_price_mp:
+    description: "Onion retail price (DOCA) in Madhya Pradesh"
+    commodity: onion
+    source_table: onion_prices
+    value_column: retail_price
+    date_column: date
+    filters:
+      state: Madhya Pradesh
+    grain: daily
+    unit: Rs/Qtl
+    role: target_candidate
+
+  onion_retail_price_maharashtra:
+    description: "Onion retail price (DOCA) in Maharashtra"
+    commodity: onion
+    source_table: onion_prices
+    value_column: retail_price
+    date_column: date
+    filters:
+      state: Maharashtra
+    grain: daily
+    unit: Rs/Qtl
+    role: target_candidate
+
+  onion_arrival_ap:
+    description: "Onion mandi arrival quantity in Andhra Pradesh"
+    commodity: onion
+    source_table: onion_prices
+    value_column: arrival_quantity
+    date_column: date
+    filters:
+      state: Andhra Pradesh
+    grain: daily
+    unit: Tonnes
+    role: factor
+
+  onion_arrival_karnataka:
+    description: "Onion mandi arrival quantity in Karnataka"
+    commodity: onion
+    source_table: onion_prices
+    value_column: arrival_quantity
+    date_column: date
+    filters:
+      state: Karnataka
+    grain: daily
+    unit: Tonnes
+    role: factor
+
+  onion_arrival_mp:
+    description: "Onion mandi arrival quantity in Madhya Pradesh"
+    commodity: onion
+    source_table: onion_prices
+    value_column: arrival_quantity
+    date_column: date
+    filters:
+      state: Madhya Pradesh
+    grain: daily
+    unit: Tonnes
+    role: factor
+
+  onion_arrival_maharashtra:
+    description: "Onion mandi arrival quantity in Maharashtra"
+    commodity: onion
+    source_table: onion_prices
+    value_column: arrival_quantity
+    date_column: date
+    filters:
+      state: Maharashtra
+    grain: daily
+    unit: Tonnes
+    role: factor
+
+dimensions:
+  states:
+    values:
+      - name: Andhra Pradesh
+        synonyms: [AP, andhra]
+      - name: Karnataka
+        synonyms: [karnataka, KA]
+      - name: Madhya Pradesh
+        synonyms: [MP, madhya pradesh]
+      - name: Maharashtra
+        synonyms: [MH, maharashtra, maha]
+    default: Maharashtra
+
+  price_types:
+    values:
+      - name: modal_price
+        synonyms: [mandi price, wholesale price, modal, mandi]
+      - name: retail_price
+        synonyms: [retail, doca, consumer price]
+    default: modal_price
+
+join_keys:
+  - tables: [onion_prices]
+    keys: [date, state]
+
+local_defaults:
+  state: Maharashtra
+  note: "TODO: confirm default state with user"

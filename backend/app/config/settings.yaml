@@ -1,0 +1,60 @@
+# Application settings
+app:
+  name: Commodity Price Forecaster
+  version: 0.1.0
+
+# LLM settings
+llm:
+  provider: groq
+  model: openai/gpt-oss-20b
+  temperature: 0.1
+  scope_classifier_model: openai/gpt-oss-20b
+
+# Forecasting
+forecast:
+  default_model: amazon/chronos-2
+  fallback_model: autogluon/chronos-2-small
+  quantiles: [0.1, 0.5, 0.9]
+  timeout_seconds: 120
+  history_windows:
+    short:  # 7, 15 day horizons
+      recommended_days: 180
+      minimum_days: 90
+    medium:  # 30 day horizon
+      recommended_days: 365
+      minimum_days: 120
+    long:  # 90 day horizon
+      recommended_days: 730
+      minimum_days: 180
+  max_history_days: 1095
+  max_horizon_days: 90
+
+# Pipeline
+pipeline:
+  max_gap_fill_days: 3
+  sparsity_threshold: 0.70  # below this -> PARTIAL
+  weekly_fallback_filled_ratio: 0.20  # if >20% filled -> resample to weekly
+  cap_outliers: false
+  auto_forecast_covariates: false
+
+# Data settings
+data:
+  use_data_end_as_today: true
+  stale_data_warning_days: 30
+  duckdb_path: data/duckdb/commodities.duckdb
+
+# API settings  
+api:
+  cors_origins:
+    - "http://localhost:3000"
+    - "http://localhost:8501"
+    - "http://localhost:8000"
+  enable_api_key: false
+  rate_limit_per_session: 60  # requests per minute
+  max_input_length: 2000
+
+# Agent settings
+agent:
+  max_iterations: 6
+  memory_turns: 10
+  parallel_tool_calls: false

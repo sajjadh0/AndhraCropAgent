@@ -1,0 +1,37 @@
+# Risk price thresholds by commodity
+# Note: As per Build Plan Section 10, thresholds must never be invented.
+# Values here are auto-derived from 5-year historical percentiles (P10, P85, P90, P95)
+# Label: "auto-derived, replace with real values"
+
+commodities:
+  onion:
+    unit: Rs/Qtl
+    note: "auto-derived, replace with real values"
+    levels:
+      - name: critical_low
+        display_name: Critical Low (Farmer Distress)
+        direction: lower
+        value: 750.0
+        status: PLACEHOLDER_AUTO_DERIVED
+        description: "Severe downward price collapse threshold (historically ~10th percentile)."
+
+      - name: watch_high
+        display_name: Watch Level (Upper)
+        direction: upper
+        value: 2700.0
+        status: PLACEHOLDER_AUTO_DERIVED
+        description: "Early warning price increase threshold (historically ~85th percentile)."
+
+      - name: warning_high
+        display_name: Warning Level (Consumer Stress)
+        direction: upper
+        value: 3200.0
+        status: PLACEHOLDER_AUTO_DERIVED
+        description: "Moderate price surge alert threshold (historically ~90th percentile)."
+
+      - name: critical_high
+        display_name: Critical High (Spike Alert)
+        direction: upper
+        value: 3700.0
+        status: PLACEHOLDER_AUTO_DERIVED
+        description: "Extreme price inflation threshold (historically ~95th percentile)."
