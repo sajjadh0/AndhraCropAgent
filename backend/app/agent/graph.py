@@ -81,7 +81,7 @@ def create_agent_graph(
     if checkpointer is None:
         checkpointer = MemorySaver()
 
-    # Tools definition
+    # Tools definition 
     tools_list = build_tool_registry(
         semantic_layer=semantic_layer,
         data_access=data_access,
